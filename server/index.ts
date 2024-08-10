@@ -17,7 +17,10 @@ app.use(
   })
 );
 
-app.get("/api/hello", (c) => c.json({ msg: "Hello from Hono!" }));
+// routes
+const apiRoutes = app
+  .basePath("/api")
+  .get("/hello", (c) => c.json({ msg: "Hello from Hono🔥!" }));
 
 // static files
 app.get("*", serveStatic({ root: "./dist" }));
@@ -28,4 +31,6 @@ serve({
   port: Number(process.env.PORT) || 3000,
 });
 
-console.log(`Server is running on port http://localhost:3000`);
+console.log("Server is running on port http://localhost:3000");
+
+export type ApiRoutes = typeof apiRoutes;

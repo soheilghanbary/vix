@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "concurrently \"vite\" \"tsx watch server/index.ts\"",
-    "start": "concurrently \"vite preview\" \"tsx watch server/index.ts\"",
+    "start": "tsx watch server/index.ts",
     "lint": "biome format --write .",
     "db:push": "prisma db push",
     "db:gen": "prisma generate",

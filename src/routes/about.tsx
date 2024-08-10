@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-
-const getHello = () => fetch("/api/hello").then((res) => res.json());
+import { api } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
 
 export function About() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    getHello().then((res) => setData(res));
-  }, []);
+  const { data, isPending } = useQuery({
+    queryKey: ["hello"],
+    queryFn: () => api.hello.$get().then((res) => res.json()),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
 
   return (
     <div>
       <h1>About Page is Here</h1>
-      {data ? (
+      {!isPending ? (
         <pre>{JSON.stringify(data, null, 2)}</pre>
       ) : (
         <p>loading data...</p>
