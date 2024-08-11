@@ -1,20 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { About } from "./about";
-import { Home } from "./home";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { About } from './about';
+import { Home } from './home';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "about",
+    path: 'about',
     element: <About />,
   },
 ]);
 
-export const RouteProvider = () => (
-  <section className="container mx-auto">
-    <RouterProvider router={router} />
-  </section>
-);
+export const RouteProvider = () => <RouterProvider router={router} />;
