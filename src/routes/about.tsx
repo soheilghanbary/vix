@@ -1,9 +1,10 @@
-import { api } from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
+import { api } from '@/lib/api';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 
-export function About() {
+function About() {
   const { data, isPending } = useQuery({
-    queryKey: ["hello"],
+    queryKey: ['hello'],
     queryFn: () => api.hello.$get().then((res) => res.json()),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -20,3 +21,7 @@ export function About() {
     </div>
   );
 }
+
+export const Route = createFileRoute('/about')({
+  component: About,
+});
